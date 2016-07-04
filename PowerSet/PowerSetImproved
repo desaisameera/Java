@@ -1,0 +1,52 @@
+import java.util.*;
+
+
+public class SubSets {
+	public List<Integer> findSubsets(List<Integer>set) {
+		List<Integer>subsets = new ArrayList<Integer>(); // List for holding the previous results
+		int end = 0;
+		for(Integer s : set ) {
+			subsets.add(s);
+			int current = 0;
+			while(current < end) {
+				String appendedNumber = subsets.get(current).toString() + s.toString();
+				subsets.add(Integer.parseInt(appendedNumber));
+				current++;
+			}
+			end = subsets.size();
+		}
+		return subsets;
+	}
+	
+	public static void main(String[]args) {
+		List<Integer>set = new ArrayList<Integer>();
+		set.add(1);
+		set.add(2);
+		set.add(3);
+		System.out.println("The elements in set are :");
+		System.out.println();
+		System.out.print(set);
+		System.out.println();
+		SubSets s = new SubSets();
+		List<Integer>subsets = s.findSubsets(set);
+		System.out.println("===================");
+		System.out.println("The subets are");
+		System.out.print(subsets);
+		
+		System.out.println();
+		System.out.println("Testing an empty set");
+		System.out.println("===================");
+		List<Integer>set1 = new ArrayList<Integer>();
+		List<Integer>subsets1 = s.findSubsets(set1);
+		System.out.println(subsets1);
+		
+		System.out.println();
+		System.out.println("Testing set with a single element");
+		System.out.println("===================");
+		List<Integer>set2 = new ArrayList<Integer>();
+		set2.add(1);
+		List<Integer>subsets2 = s.findSubsets(set2);
+		System.out.println(subsets2);
+		
+	}
+}
