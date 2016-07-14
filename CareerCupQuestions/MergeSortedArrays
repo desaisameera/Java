@@ -1,0 +1,54 @@
+
+public class Question1 {
+	private void SortAndMergeArrays(int[]a, int[]b, int[]sortedArray) {
+		int aLength = a.length;
+		int bLength = b.length;
+		int sortedArrayLength = aLength + bLength;
+		int aIndex = 0;
+		int bIndex = 0;
+		int sortedArrayIndex = 0;
+		
+		while(aIndex < aLength && bIndex < bLength) {
+			if(a[aIndex] == b[bIndex]) {
+				sortedArray[sortedArrayIndex++] = a[aIndex++];
+				sortedArray[sortedArrayIndex++] = b[bIndex++];
+			}
+			else if(a[aIndex] < b[bIndex]) {
+				sortedArray[sortedArrayIndex++] = a[aIndex++];
+			}
+			else{
+				sortedArray[sortedArrayIndex++] = b[bIndex++];
+			}
+		}
+		while(aIndex < aLength) {
+			sortedArray[sortedArrayIndex++] = a[aIndex++];
+		}
+		while(bIndex < bLength) {
+			sortedArray[sortedArrayIndex++] = b[bIndex++];
+		}
+	}
+	private int[] SortAndMergeArrays(int[]a, int []b) {
+		int[]sortedArray = new int[a.length + b.length];
+		SortAndMergeArrays(a, b, sortedArray);
+		return sortedArray;
+	}
+	public static void main(String[]args) {
+		int[]a = {0, 1, 3, 5};
+		int[]b = {1, 2, 3, 4};
+		Question1 q = new Question1();
+		int[] sortedArray = q.SortAndMergeArrays(a, b);
+		for(int i = 0; i < sortedArray.length; i++) {
+			System.out.print(sortedArray[i]);
+		}
+		
+		int[]a1 = {1, 2, 3, 4, 5, 6};
+		int[]b1 = {4, 5};
+		System.out.println();
+		int[] sortedArray1 = q.SortAndMergeArrays(a1, b1);
+		for(int i = 0; i < sortedArray1.length; i++) {
+			System.out.print(sortedArray1[i]);
+		}
+		
+	}
+
+}
