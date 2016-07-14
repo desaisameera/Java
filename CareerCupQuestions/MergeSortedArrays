@@ -20,13 +20,19 @@ public class Question1 {
 				sortedArray[sortedArrayIndex++] = b[bIndex++];
 			}
 		}
+		//If the length of b is less than length of a, copy a as it is to sortedArray
 		while(aIndex < aLength) {
 			sortedArray[sortedArrayIndex++] = a[aIndex++];
 		}
+		
+		//If the length of a is less than length of b, copy b as it is to sortedArray
 		while(bIndex < bLength) {
 			sortedArray[sortedArrayIndex++] = b[bIndex++];
 		}
 	}
+	/*
+	 * Function to merge sorted arrays
+	 */
 	private int[] SortAndMergeArrays(int[]a, int []b) {
 		int[]sortedArray = new int[a.length + b.length];
 		SortAndMergeArrays(a, b, sortedArray);
@@ -40,10 +46,10 @@ public class Question1 {
 		for(int i = 0; i < sortedArray.length; i++) {
 			System.out.print(sortedArray[i]);
 		}
+		System.out.println();
 		
 		int[]a1 = {1, 2, 3, 4, 5, 6};
 		int[]b1 = {4, 5};
-		System.out.println();
 		int[] sortedArray1 = q.SortAndMergeArrays(a1, b1);
 		for(int i = 0; i < sortedArray1.length; i++) {
 			System.out.print(sortedArray1[i]);
